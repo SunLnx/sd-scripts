@@ -358,7 +358,7 @@ class NetworkTrainer:
     def on_step_start(self, args, accelerator, network, text_encoders, unet, batch, weight_dtype, is_train: bool = True):
         pass
     
-    def on_step_progress(self, accelerator, args, global_step, epoch, step, loss, progress_ratio, metadata):
+    def on_step_progress(self, args, accelerator, global_step, epoch, step, loss, progress_ratio, metadata):
         logger.debug(f"global step: {global_step}, epoch: {epoch}, step: {step}, loss: {loss:.4f}, progress: {progress_ratio:.2%}")
         pass
 
@@ -1467,7 +1467,7 @@ class NetworkTrainer:
                     progress_bar.update(1)
                     progress_ratio = progress_bar.n / progress_bar.total
                     self.on_step_progress(
-                        accelerator, args, global_step, epoch + 1, step + 1, loss.item(), progress_ratio, metadata
+                        args, accelerator, global_step, epoch + 1, step + 1, loss.item(), progress_ratio, metadata
                     )
                     global_step += 1
 

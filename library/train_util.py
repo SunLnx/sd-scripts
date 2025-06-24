@@ -4665,7 +4665,7 @@ def read_config_from_file(args: argparse.Namespace, parser: argparse.ArgumentPar
             ignore_nesting_dict[key] = value
 
     config_args = argparse.Namespace(**ignore_nesting_dict)
-    args = parser.parse_args(namespace=config_args)
+    args, _ = parser.parse_known_args(namespace=config_args)
     args.config_file = os.path.splitext(args.config_file)[0]
 
     return args

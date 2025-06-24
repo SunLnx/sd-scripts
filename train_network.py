@@ -359,7 +359,7 @@ class NetworkTrainer:
         pass
     
     def on_step_progress(self, accelerator, args, global_step, epoch, step, loss, progress_ratio, metadata):
-        logger.info(f"global step: {global_step}, epoch: {epoch}, step: {step}, loss: {loss:.4f}, progress: {progress_ratio:.2%}")
+        logger.debug(f"global step: {global_step}, epoch: {epoch}, step: {step}, loss: {loss:.4f}, progress: {progress_ratio:.2%}")
         pass
 
     def on_validation_step_end(self, args, accelerator, network, text_encoders, unet, batch, weight_dtype):

@@ -1466,11 +1466,11 @@ class NetworkTrainer:
                 if accelerator.sync_gradients:
                     progress_bar.update(1)
                     progress_ratio = progress_bar.n / progress_bar.total
+                    global_step += 1
                     if accelerator.is_main_process:
                         self.on_step_progress(
                             args, accelerator, global_step, epoch + 1, step + 1, loss.item(), progress_ratio, metadata
                         )
-                    global_step += 1
 
                     optimizer_eval_fn()
                     self.sample_images(
